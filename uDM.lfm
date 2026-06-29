@@ -1,0 +1,63 @@
+object DM: TDM
+  OldCreateOrder = False
+  Height = 300
+  Width = 400
+  object ZConn: TZConnection
+    Protocol = 'firebird-1.5'
+    HostName = 'localhost'
+    Database = 'D:\SISTEMA\WSIND\BD\WSIND.FDB'
+    User = 'SYSDBA'
+    Password = 'masterkey'
+    LibraryLocation = 'C:\Program Files (x86)\Firebird\Firebird_1_5\bin\fbclient.dll'
+    Connected = False
+    Left = 24
+    Top = 16
+  end
+  object QCadAssoc: TZQuery
+    Connection = ZConn
+    SQL.Strings = (
+      'select ID, CNPJ, NOME from CADASSOC order by NOME')
+    Left = 24
+    Top = 64
+  end
+  object dsCadAssoc: TDataSource
+    DataSet = QCadAssoc
+    Left = 120
+    Top = 64
+  end
+  object QCadFunc: TZQuery
+    Connection = ZConn
+    SQL.Strings = (
+      '/* insert/update CADFUNC via ExecSQL */')
+    Left = 24
+    Top = 112
+  end
+  object QTmp: TZQuery
+    Connection = ZConn
+    SQL.Strings = (
+      '/* insert NTMPIMPORT via ExecSQL */')
+    Left = 120
+    Top = 112
+  end
+  object qryCheckAssoc: TZQuery
+    Connection = ZConn
+    SQL.Strings = (
+      'select 1 from CADASSOC where ID = :PID')
+    Left = 24
+    Top = 160
+  end
+  object qryCheckFunc: TZQuery
+    Connection = ZConn
+    SQL.Strings = (
+      'select 1 from CADFUNC where ID_ASSOCIADO = :PID and MATRICULA = :PMAT')
+    Left = 120
+    Top = 160
+  end
+  object qryDeleteTmp: TZQuery
+    Connection = ZConn
+    SQL.Strings = (
+      'delete from NTMPIMPORT where ANO = :PANO and MES = :PMES and ID_ASSOCIADO = :PID')
+    Left = 216
+    Top = 160
+  end
+end
