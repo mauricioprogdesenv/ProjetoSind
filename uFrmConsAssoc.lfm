@@ -1,0 +1,45 @@
+object frmConsAssoc: TfrmConsAssoc
+  Caption = 'Consulta de Associados'
+  ClientHeight = 360
+  ClientWidth = 640
+  OnShow = FormShow
+  Position = poScreenCenter
+  object Label1: TLabel
+    Left = 8
+    Top = 8
+    Caption = 'Filtro (Nome/CNPJ):'
+  end
+  object edtFiltro: TEdit
+    Left = 8
+    Top = 24
+    Width = 400
+    Anchors = [akLeft, akTop, akRight]
+    OnChange = edtFiltroChange
+  end
+  object DBGrid1: TDBGrid
+    Left = 8
+    Top = 56
+    Width = 624
+    Height = 248
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    DataSource = DM.dsCadAssoc
+  end
+  object btnSelecionar: TButton
+    Left = 456
+    Top = 320
+    Width = 80
+    Height = 28
+    Caption = 'Selecionar'
+    Anchors = [akRight, akBottom]
+    OnClick = btnSelecionarClick
+  end
+  object btnFechar: TButton
+    Left = 552
+    Top = 320
+    Width = 80
+    Height = 28
+    Caption = 'Fechar'
+    Anchors = [akRight, akBottom]
+    OnClick = btnFecharClick
+  end
+end
